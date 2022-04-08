@@ -5,7 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
 import * as Styles from './Fetch.styles';
-export default function FetchUI(props) {
+import { IFetchUIProps } from './Fetch.types';
+export default function FetchUI(props: IFetchUIProps) {
   return (
     <>
       <Styles.Position>
@@ -25,9 +26,9 @@ export default function FetchUI(props) {
                   label="grade"
                   onChange={props.handleChange}
                 >
-                  <MenuItem value={''}>분당고등학교 1학년</MenuItem>
-                  <MenuItem value={''}>분당고등학교 2학년</MenuItem>
-                  <MenuItem value={''}>분당고등학교 3학년</MenuItem>
+                  <MenuItem value={'1'}>분당고등학교 1학년</MenuItem>
+                  <MenuItem value={'2'}>분당고등학교 2학년</MenuItem>
+                  <MenuItem value={'3'}>분당고등학교 3학년</MenuItem>
                 </Select>
               </FormControl>
               {new Array(10).fill(8).map((e) => (

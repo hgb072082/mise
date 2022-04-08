@@ -7,9 +7,9 @@ export default function Fetch() {
   const [ratingData, setRatingData] = useState({});
   const [grade, setGrade] = useState('');
 
-  useEffect(() => {}, []);
   const handleChange = (event: SelectChangeEvent) => {
     setGrade(event.target.value as string);
+    console.log(event.target.value);
   };
   return (
     <FetchUI
