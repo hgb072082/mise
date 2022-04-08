@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IFetchStyleProps } from './Fetch.types';
 export const Position = styled.div`
   width: 100%;
   display: flex;
@@ -15,7 +16,7 @@ export const InnerRowWrapper = styled.div`
   flex-direction: row;
   padding-top: 77px;
 `;
-export const ContentsBox = styled.div`
+export const ContentsBox = styled.div<IFetchStyleProps>`
   display: flex;
   flex-direction: column;
   padding-left: 24px;
@@ -38,20 +39,20 @@ export const ListRow = styled.div`
   margin-bottom: 8px;
 `;
 
-export const NumberTxt = styled.div`
+export const NumberTxt = styled.div<IFetchStyleProps>`
   font-size: 32px;
   font-weight: bold;
   color: #707070;
   flex: ${(props) => props.flex || 'none'};
 `;
-export const CheryIcon = styled.div`
+export const CheryIcon = styled.div<IFetchStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
   flex: ${(props) => props.flex || 'none'};
 `;
 
-export const InfoTxtColBox = styled.div`
+export const InfoTxtColBox = styled.div<IFetchStyleProps>`
   display: flex;
   flex-direction: column;
   flex: ${(props) => props.flex || 'none'};
@@ -65,7 +66,7 @@ export const NameTxt = styled.div`
   font-size: 28px;
   color: #909398;
 `;
-export const ScoreTxt = styled.div`
+export const ScoreTxt = styled.div<IFetchStyleProps>`
   font-size: 26px;
   color: #5c5f66;
   flex: ${(props) => props.flex || 'none'};
@@ -87,13 +88,13 @@ export const TableHeaderRow = styled.div`
   border-bottom: 1px solid #f5f5f5;
 `;
 
-export const HeaderEl = styled.div`
+export const HeaderEl = styled.div<IFetchStyleProps>`
   flex: ${(props) => props.flex || 'none'};
   color: #909398;
   font-size: 12px;
   display: flex;
 `;
-export const TableRow = styled.div`
+export const TableRow = styled.div<IFetchStyleProps>`
   display: flex;
   align-items: center;
   width: 620px;
@@ -102,12 +103,12 @@ export const TableRow = styled.div`
     props.isWrong ? 'rgb(242,85,85,0.1)' : 'none'};
   border-bottom: 1px solid #f5f5f5;
 `;
-export const TableRowEl = styled.div`
+export const TableRowEl = styled.div<IFetchStyleProps>`
   display: flex;
   align-items: center;
   flex: ${(props) => props.flex || 'none'};
 `;
-export const Circle = styled.div`
+export const Circle = styled.div<IFetchStyleProps>`
   border: 1px solid
     ${(props) => (props.isWrong ? 'rgb(242, 85, 85, 0.2)' : '#E6EBFF')};
   width: 30px;
@@ -117,7 +118,7 @@ export const Circle = styled.div`
   justify-content: center;
   border-radius: 50%;
 `;
-export const CircleBox = styled.div`
+export const CircleBox = styled.div<IFetchStyleProps>`
   border-radius: 50%;
   flex: ${(props) => props.flex || 'none'};
   display: flex;
@@ -125,7 +126,7 @@ export const CircleBox = styled.div`
   margin-left: 20px;
 `;
 
-export const TableNumTxt = styled.div`
+export const TableNumTxt = styled.div<IFetchStyleProps>`
   font-size: 12px;
   font-weight: bold;
   color: ${(props) => (props.isWrong ? '#f25555' : '#5471FF')};

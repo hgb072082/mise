@@ -1,6 +1,6 @@
 import * as Styles from './Main.styles';
-
-export default function MainUI(props) {
+import { IMainUIProps } from './Main.types';
+export default function MainUI(props: IMainUIProps) {
   return (
     <>
       <Styles.Position>

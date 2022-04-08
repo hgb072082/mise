@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { ReactEventHandler, useState, KeyboardEvent } from 'react';
 import MainUI from './Main.presenter';
 
 export default function Main() {
   const router = useRouter();
-  const [inputCode, setInputCode] = useState(0);
-  const onChangeInputCode = (e) => {
+  const [inputCode, setInputCode] = useState('');
+  const onChangeInputCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputCode(e.target.value);
     console.log(e.target.value);
   };
-  const onKeyPress = (e) => {
+  const onKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       onClickFetchBtn();
     }
@@ -18,7 +18,7 @@ export default function Main() {
     try {
       console.log(inputCode);
       router.push(`/fetch/${inputCode}`);
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   };
