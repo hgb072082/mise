@@ -7,7 +7,6 @@ export default function Main() {
   const [inputCode, setInputCode] = useState('');
   const onChangeInputCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputCode(e.target.value);
-    console.log(e.target.value);
   };
   const onKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
@@ -16,7 +15,6 @@ export default function Main() {
   };
   const onClickFetchBtn = async () => {
     try {
-      console.log(inputCode);
       router.push(`/fetch/${inputCode}`);
     } catch (err: any) {
       alert(err.message);

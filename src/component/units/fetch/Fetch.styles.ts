@@ -37,6 +37,7 @@ export const ListRow = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  cursor: pointer;
 `;
 
 export const NumberTxt = styled.div<IFetchStyleProps>`
@@ -100,7 +101,7 @@ export const TableRow = styled.div<IFetchStyleProps>`
   width: 620px;
   height: 43px;
   background-color: ${(props) =>
-    props.isWrong ? 'rgb(242,85,85,0.1)' : 'none'};
+    props.isCorrect ? 'none' : 'rgb(242,85,85,0.1)'};
   border-bottom: 1px solid #f5f5f5;
 `;
 export const TableRowEl = styled.div<IFetchStyleProps>`
@@ -110,7 +111,7 @@ export const TableRowEl = styled.div<IFetchStyleProps>`
 `;
 export const Circle = styled.div<IFetchStyleProps>`
   border: 1px solid
-    ${(props) => (props.isWrong ? 'rgb(242, 85, 85, 0.2)' : '#E6EBFF')};
+    ${(props) => (props.isCorrect ? '#E6EBFF' : 'rgb(242, 85, 85, 0.2)')};
   width: 30px;
   height: 30px;
   display: flex;
@@ -129,5 +130,5 @@ export const CircleBox = styled.div<IFetchStyleProps>`
 export const TableNumTxt = styled.div<IFetchStyleProps>`
   font-size: 12px;
   font-weight: bold;
-  color: ${(props) => (props.isWrong ? '#f25555' : '#5471FF')};
+  color: ${(props) => (props.isCorrect ? '#5471FF' : '#f25555')};
 `;

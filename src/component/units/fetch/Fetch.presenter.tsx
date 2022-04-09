@@ -7,13 +7,22 @@ import { useState } from 'react';
 import * as Styles from './Fetch.styles';
 import { IFetchUIProps } from './Fetch.types';
 export default function FetchUI(props: IFetchUIProps) {
+  const {
+    studentData,
+    ratingData,
+    grade,
+    handleChange,
+    onClickFetchScoreDetail,
+  } = props;
   return (
     <>
       <Styles.Position>
         <Styles.Wrapper>
           <Styles.InnerRowWrapper>
             <Styles.ContentsBox>
-              <Styles.AcademyNameTxt>분당 청솔 학원</Styles.AcademyNameTxt>
+              <Styles.AcademyNameTxt>
+                {studentData.academyName}
+              </Styles.AcademyNameTxt>
               <FormControl
                 fullWidth
                 style={{ marginTop: '20px', marginBottom: '20px' }}
@@ -22,32 +31,37 @@ export default function FetchUI(props: IFetchUIProps) {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={props.grade}
+                  defaultValue={0}
+                  value={grade}
                   label="grade"
-                  onChange={props.handleChange}
+                  onChange={handleChange}
                 >
-                  <MenuItem value={'1'}>분당고등학교 1학년</MenuItem>
-                  <MenuItem value={'2'}>분당고등학교 2학년</MenuItem>
-                  <MenuItem value={'3'}>분당고등학교 3학년</MenuItem>
+                  {studentData.result.map((e, i) => (
+                    <MenuItem key={i} value={i}>
+                      {e.grade}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
-              {new Array(10).fill(8).map((e) => (
-                <Styles.ListRow key={e}>
-                  <Styles.NumberTxt>1</Styles.NumberTxt>
+              {studentData?.result[grade]?.students?.map((e, i) => (
+                <Styles.ListRow key={e} onClick={onClickFetchScoreDetail(e.id)}>
+                  <Styles.NumberTxt>{i + 1}</Styles.NumberTxt>
                   <Styles.CheryIcon flex={1}>
                     <img src={'/fetch/cheryIcon.png'} />
                   </Styles.CheryIcon>
                   <Styles.InfoTxtColBox flex={2}>
-                    <Styles.GradeTxt>고3/N</Styles.GradeTxt>
-                    <Styles.NameTxt>닉네임</Styles.NameTxt>
+                    <Styles.GradeTxt>
+                      {studentData.result[grade]?.grade}
+                    </Styles.GradeTxt>
+                    <Styles.NameTxt>{e.name}</Styles.NameTxt>
                   </Styles.InfoTxtColBox>
-                  <Styles.ScoreTxt>98점</Styles.ScoreTxt>
+                  <Styles.ScoreTxt>{e.score}</Styles.ScoreTxt>
                 </Styles.ListRow>
               ))}
             </Styles.ContentsBox>
             <Styles.ContentsBox right={true}>
               <Styles.DetailInfoTxt style={{ marginLeft: '15px' }}>
-                유동훈 학생
+                {ratingData.name}
               </Styles.DetailInfoTxt>
               <Styles.DetailInfoTxt
                 style={{
@@ -56,7 +70,7 @@ export default function FetchUI(props: IFetchUIProps) {
                   marginBottom: '26px',
                 }}
               >
-                82점
+                {ratingData.score}
               </Styles.DetailInfoTxt>
               <Styles.CheckScoreTable>
                 <Styles.TableHeaderRow>
@@ -71,20 +85,24 @@ export default function FetchUI(props: IFetchUIProps) {
 
                   <Styles.HeaderEl flex={1}>배점</Styles.HeaderEl>
                 </Styles.TableHeaderRow>
-                {new Array(16).fill(0).map((e, idx) => (
-                  <Styles.TableRow isWrong={false} key={e}>
+                {ratingData.problem?.map((e, idx) => (
+                  <Styles.TableRow isCorrect={e.correct} key={idx}>
                     <Styles.CircleBox flex={1}>
-                      <Styles.Circle isWrong={false}>
-                        <Styles.TableNumTxt isWrong={false}>
+                      <Styles.Circle isCorrect={e.correct}>
+                        <Styles.TableNumTxt isCorrect={e.correct}>
                           {idx + 1}
                         </Styles.TableNumTxt>
                       </Styles.Circle>
                     </Styles.CircleBox>
 
-                    <Styles.TableRowEl flex={1}>주장찾기</Styles.TableRowEl>
-                    <Styles.TableRowEl flex={1}>78%</Styles.TableRowEl>
-                    <Styles.TableRowEl flex={1}>1:10</Styles.TableRowEl>
-                    <Styles.TableRowEl flex={1}>3.1</Styles.TableRowEl>
+                    <Styles.TableRowEl flex={1}>{e.type}</Styles.TableRowEl>
+                    <Styles.TableRowEl flex={1}>
+                      {e.correctRate}
+                    </Styles.TableRowEl>
+                    <Styles.TableRowEl flex={1}>
+                      {e.solveTime}
+                    </Styles.TableRowEl>
+                    <Styles.TableRowEl flex={1}>{e.points}</Styles.TableRowEl>
                   </Styles.TableRow>
                 ))}
               </Styles.CheckScoreTable>

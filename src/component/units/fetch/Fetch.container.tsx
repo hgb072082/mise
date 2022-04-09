@@ -1,15 +1,39 @@
 import FetchUI from './Fetch.presenter';
 import axios from 'axios';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import useAPI from '../../../useAPI';
+import { useRouter } from 'next/router';
+import { CallbackType } from './Fetch.types';
 export default function Fetch() {
-  const [studentData, setStudentData] = useState({});
+  const [studentData, setStudentData] = useState({
+    result: [
+      {
+        students: [],
+      },
+    ],
+  });
   const [ratingData, setRatingData] = useState({});
-  const [grade, setGrade] = useState('');
+  const [grade, setGrade] = useState(0);
 
+  const [API] = useCallback<CallbackType>(useAPI(), []);
+  const router = useRouter();
   const handleChange = (event: SelectChangeEvent) => {
-    setGrade(event.target.value as string);
-    console.log(event.target.value);
+    setGrade(Number(event.target.value as string));
+  };
+  useEffect(() => {
+    const fetchAcademyInfo = async () => {
+      const params = { code: router.query.code };
+      const result = await API.academy.fetchAcademyInfo(params);
+      setStudentData(result.data);
+    };
+    fetchAcademyInfo();
+  }, []);
+
+  const onClickFetchScoreDetail = (id: string) => async () => {
+    const params = { id };
+    const result = await API.academy.fetchScoreDetail(params);
+    setRatingData(result.data);
   };
   return (
     <FetchUI
@@ -17,6 +41,7 @@ export default function Fetch() {
       ratingData={ratingData}
       grade={grade}
       handleChange={handleChange}
+      onClickFetchScoreDetail={onClickFetchScoreDetail}
     />
   );
 }
