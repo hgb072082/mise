@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "netlify-deploy": "next build && next export"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -15,7 +16,8 @@
     "axios": "^0.26.1",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-query": "^3.34.19"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
