@@ -20,15 +20,14 @@ export default function Fetch() {
   const router = useRouter();
   const handleChange = (event: SelectChangeEvent) => {
     setGrade(Number(event.target.value as string));
+    setRatingData({});
   };
   useEffect(() => {
     if (router.isReady) {
       const fetchAcademyInfo = async () => {
-        console.log(router.query.code);
         const params = {
           code: router.query.code,
         };
-        console.log(params);
         const result = await API.academy.fetchAcademyInfo(params);
         setStudentData(result.data);
       };

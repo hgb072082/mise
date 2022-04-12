@@ -22,6 +22,7 @@ export const ContentsBox = styled.div<IFetchStyleProps>`
   padding-left: 24px;
   padding-right: 150px;
   border-left: ${(props) => (props.right ? '1px solid #707070' : 'none')};
+  width: 750px;
 `;
 
 export const AcademyNameTxt = styled.div`
@@ -57,6 +58,7 @@ export const InfoTxtColBox = styled.div<IFetchStyleProps>`
   display: flex;
   flex-direction: column;
   flex: ${(props) => props.flex || 'none'};
+  margin-left: 40px;
 `;
 
 export const GradeTxt = styled.div`

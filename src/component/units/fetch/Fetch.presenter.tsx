@@ -46,10 +46,8 @@ export default function FetchUI(props: IFetchUIProps) {
               {studentData?.result[grade]?.students?.map((e, i) => (
                 <Styles.ListRow key={e} onClick={onClickFetchScoreDetail(e.id)}>
                   <Styles.NumberTxt>{i + 1}</Styles.NumberTxt>
-                  <Styles.CheryIcon flex={1}>
-                    <img src={'/fetch/cheryIcon.png'} />
-                  </Styles.CheryIcon>
-                  <Styles.InfoTxtColBox flex={2}>
+
+                  <Styles.InfoTxtColBox>
                     <Styles.GradeTxt>
                       {studentData.result[grade]?.grade}
                     </Styles.GradeTxt>
