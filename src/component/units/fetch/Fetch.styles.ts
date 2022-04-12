@@ -39,6 +39,7 @@ export const ListRow = styled.div`
   align-items: center;
   margin-bottom: 8px;
   cursor: pointer;
+  justify-content: space-between;
 `;
 
 export const NumberTxt = styled.div<IFetchStyleProps>`
@@ -60,6 +61,10 @@ export const InfoTxtColBox = styled.div<IFetchStyleProps>`
   flex: ${(props) => props.flex || 'none'};
   margin-left: 40px;
 `;
+export const LeftBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const GradeTxt = styled.div`
   font-size: 24px;
@@ -73,6 +78,7 @@ export const ScoreTxt = styled.div<IFetchStyleProps>`
   font-size: 26px;
   color: #5c5f66;
   flex: ${(props) => props.flex || 'none'};
+  margin-left: 30px;
 `;
 export const DetailInfoTxt = styled.div`
   font-size: 24px;
@@ -110,6 +116,7 @@ export const TableRowEl = styled.div<IFetchStyleProps>`
   display: flex;
   align-items: center;
   flex: ${(props) => props.flex || 'none'};
+  font-size: 12px;
 `;
 export const Circle = styled.div<IFetchStyleProps>`
   border: 1px solid

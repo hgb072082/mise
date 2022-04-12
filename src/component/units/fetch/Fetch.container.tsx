@@ -6,6 +6,7 @@ import useAPI from '../../../useAPI';
 import { useRouter } from 'next/router';
 import { CallbackType } from './Fetch.types';
 export default function Fetch() {
+  const [currentId, setCurrentId] = useState('');
   const [studentData, setStudentData] = useState({
     result: [
       {
@@ -39,6 +40,7 @@ export default function Fetch() {
     const params = { id };
     const result = await API.academy.fetchScoreDetail(params);
     setRatingData(result.data);
+    setCurrentId(id);
   };
   return (
     <FetchUI
@@ -47,6 +49,7 @@ export default function Fetch() {
       grade={grade}
       handleChange={handleChange}
       onClickFetchScoreDetail={onClickFetchScoreDetail}
+      currentId={currentId}
     />
   );
 }

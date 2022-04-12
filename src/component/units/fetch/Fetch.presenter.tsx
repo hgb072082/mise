@@ -6,12 +6,14 @@ import Select from '@mui/material/Select';
 import { useState } from 'react';
 import * as Styles from './Fetch.styles';
 import { IFetchUIProps } from './Fetch.types';
+import { ECDH } from 'crypto';
 export default function FetchUI(props: IFetchUIProps) {
   const {
     studentData,
     ratingData,
     grade,
     handleChange,
+    currentId,
     onClickFetchScoreDetail,
   } = props;
   return (
@@ -45,21 +47,29 @@ export default function FetchUI(props: IFetchUIProps) {
               </FormControl>
               {studentData?.result[grade]?.students?.map((e, i) => (
                 <Styles.ListRow key={e} onClick={onClickFetchScoreDetail(e.id)}>
-                  <Styles.NumberTxt>{i + 1}</Styles.NumberTxt>
+                  <Styles.LeftBox>
+                    <Styles.NumberTxt>{i + 1}</Styles.NumberTxt>
 
-                  <Styles.InfoTxtColBox>
-                    <Styles.GradeTxt>
-                      {studentData.result[grade]?.grade}
-                    </Styles.GradeTxt>
-                    <Styles.NameTxt>{e.name}</Styles.NameTxt>
-                  </Styles.InfoTxtColBox>
-                  <Styles.ScoreTxt>{e.score}</Styles.ScoreTxt>
+                    <Styles.InfoTxtColBox>
+                      <Styles.GradeTxt>
+                        {studentData.result[grade]?.grade}
+                      </Styles.GradeTxt>
+                      <Styles.NameTxt>{e.name}</Styles.NameTxt>
+                    </Styles.InfoTxtColBox>
+                  </Styles.LeftBox>
+                  <Styles.ScoreTxt>
+                    {e.score ? e.score + '점' : '0점'}
+                  </Styles.ScoreTxt>
                 </Styles.ListRow>
               ))}
             </Styles.ContentsBox>
             <Styles.ContentsBox right={true}>
               <Styles.DetailInfoTxt style={{ marginLeft: '15px' }}>
-                {ratingData.name}
+                {
+                  studentData.result[grade]?.students.filter(
+                    (e) => e.id === currentId
+                  )[0]?.name
+                }
               </Styles.DetailInfoTxt>
               <Styles.DetailInfoTxt
                 style={{
@@ -68,7 +78,13 @@ export default function FetchUI(props: IFetchUIProps) {
                   marginBottom: '26px',
                 }}
               >
-                {ratingData.score}
+                {studentData.result[grade]?.students.filter(
+                  (e) => e.id === currentId
+                )[0]?.score
+                  ? studentData.result[grade]?.students.filter(
+                      (e) => e.id === currentId
+                    )[0]?.score + '점'
+                  : '0점'}
               </Styles.DetailInfoTxt>
               <Styles.CheckScoreTable>
                 <Styles.TableHeaderRow>
