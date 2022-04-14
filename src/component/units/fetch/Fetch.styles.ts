@@ -6,12 +6,12 @@ export const Position = styled.div`
   justify-content: center;
 `;
 export const Wrapper = styled.div`
-  width: 1920px;
+  width: 1200px;
   display: flex;
   justify-content: center;
 `;
 export const InnerRowWrapper = styled.div`
-  width: 1520px;
+  width: 800px;
   display: flex;
   flex-direction: row;
   padding-top: 77px;
