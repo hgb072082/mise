@@ -26,8 +26,11 @@ export default function FetchUI(props: IFetchUIProps) {
                 {studentData.academyName}
               </Styles.AcademyNameTxt>
               <FormControl
-                fullWidth
-                style={{ marginTop: '20px', marginBottom: '20px' }}
+                style={{
+                  marginTop: '20px',
+                  marginBottom: '20px',
+                  width: '526px',
+                }}
               >
                 <InputLabel id="demo-simple-select-label">학년</InputLabel>
                 <Select

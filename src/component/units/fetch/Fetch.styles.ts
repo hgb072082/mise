@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 export const InnerRowWrapper = styled.div`
-  width: 800px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   padding-top: 77px;
@@ -22,7 +22,7 @@ export const ContentsBox = styled.div<IFetchStyleProps>`
   padding-left: 24px;
   padding-right: 150px;
   border-left: ${(props) => (props.right ? '1px solid #707070' : 'none')};
-  width: 750px;
+  width: 700px;
 `;
 
 export const AcademyNameTxt = styled.div`
